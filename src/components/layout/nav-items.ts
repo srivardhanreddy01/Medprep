@@ -5,6 +5,7 @@ import {
   Layers,
   LayoutDashboard,
   Library,
+  HeartHandshake,
   NotebookPen,
   ScanSearch,
   Settings,
@@ -29,5 +30,6 @@ export const NAV_ITEMS: NavItem[] = [
   { href: "/notebook", label: "My Medical Notebook", icon: NotebookPen },
   { href: "/analytics", label: "Performance Analytics", icon: BarChart3 },
   { href: "/tutor", label: "AI Tutor", icon: Bot, phase2: true },
+  { href: "/mentor", label: "Mentor & Well-being", icon: HeartHandshake },
   { href: "/settings", label: "Settings", icon: Settings },
 ];
