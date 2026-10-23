@@ -1,4 +1,4 @@
-import { Brain, CalendarClock, ListChecks, NotebookPen, ShieldCheck, Sparkles } from "lucide-react";
+import { Brain, CalendarClock, GraduationCap, UserRound, ListChecks, NotebookPen, ShieldCheck, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { DisclaimerFooter } from "@/components/layout/disclaimer";
 import { Logo } from "@/components/layout/logo";
@@ -33,8 +33,12 @@ export default function Landing() {
             Paste any multiple-choice question. MedPrep teaches you to recognize the clues, eliminate the distractors, and
             remember the concept on exam day.
           </p>
-          <div className="mt-8 flex justify-center gap-3">
-            <Link href="/signup" className={buttonVariants({ size: "lg" })}>Start studying</Link>
+          <div className="mt-8 grid gap-4 text-left sm:grid-cols-2">
+            <Link href="/signup?path=university" className="rounded-xl border bg-card p-5 transition-colors hover:border-primary"><GraduationCap className="mb-2 size-6 text-primary" /><h2 className="font-semibold">University student</h2><p className="mt-1 text-sm text-muted-foreground">Join the pilot as a university student. Institution-linked cohorts are coming later.</p><span className="mt-3 inline-block text-sm font-medium text-primary">Get started →</span></Link>
+            <Link href="/signup?path=individual" className="rounded-xl border bg-card p-5 transition-colors hover:border-primary"><UserRound className="mb-2 size-6 text-primary" /><h2 className="font-semibold">Individual preparation</h2><p className="mt-1 text-sm text-muted-foreground">Create a personalized plan for your target exam and study schedule.</p><span className="mt-3 inline-block text-sm font-medium text-primary">Get started →</span></Link>
+          </div>
+          <div className="mt-5 flex justify-center gap-3">
+            <Link href="/signup" className={buttonVariants({ size: "lg" })}>Create account</Link>
             <Link href="/login" className={buttonVariants({ size: "lg", variant: "outline" })}>I have an account</Link>
           </div>
         </section>
