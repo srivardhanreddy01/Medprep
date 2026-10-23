@@ -1,4 +1,4 @@
-import { ArrowRight, BrainCircuit, CalendarClock, Flame, Layers, ListChecks, ScanSearch, Target, TrendingDown } from "lucide-react";
+import { ArrowRight, BookOpen, HeartHandshake, BarChart3, BrainCircuit, CalendarClock, Flame, Layers, ListChecks, ScanSearch, Target, TrendingDown } from "lucide-react";
 import Link from "next/link";
 import { AccuracyTrendChart, QuestionActivityChart, RecallRateChart, SubjectAccuracyChart } from "@/components/charts/charts";
 import { PageHeader } from "@/components/layout/page-header";
@@ -63,7 +63,7 @@ export default async function DashboardPage() {
   return (
     <>
       <PageHeader
-        title="Dashboard"
+        title="Today"
         description={d.examName ? `Preparing for ${d.examName}` : undefined}
         actions={
           <Link href="/analyze" className={buttonVariants()}>
@@ -71,6 +71,21 @@ export default async function DashboardPage() {
           </Link>
         }
       />
+
+      <section aria-label="Study areas" className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {[
+          { title: "Learn & Practice", detail: "Analyze and practice questions", href: "/analyze", icon: BookOpen },
+          { title: "Review & Recall", detail: "Review scheduled flashcards", href: "/flashcards/review", icon: Layers },
+          { title: "Exams & Progress", detail: "Track performance and exam readiness", href: "/analytics", icon: BarChart3 },
+          { title: "Mentor & Well-being", detail: "Study support and healthy habits", href: "/mentor", icon: HeartHandshake },
+        ].map((area) => (
+          <Link key={area.href} href={area.href} className="rounded-xl border bg-card p-4 transition-colors hover:bg-muted/40">
+            <area.icon className="mb-2 size-5 text-primary" aria-hidden />
+            <h2 className="font-semibold">{area.title}</h2>
+            <p className="mt-1 text-xs text-muted-foreground">{area.detail}</p>
+          </Link>
+        ))}
+      </section>
 
       {isEmpty && (
         <Card className="mb-6 border-primary/40 bg-primary-soft/40">
