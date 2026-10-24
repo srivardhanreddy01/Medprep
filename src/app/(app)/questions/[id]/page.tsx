@@ -8,6 +8,7 @@ import { NoteForm } from "@/components/notes/note-form";
 import { AnswerTab, OptionsTab, ReasoningTab, StrategyTab, VisualTab } from "@/components/question/analysis-sections";
 import { RegenerateButton } from "@/components/question/regenerate-button";
 import { ReportIssue } from "@/components/question/report-issue";
+import { LongVideosTab, ReelTab } from "@/components/question/video-tabs";
 import { Alert } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -128,6 +129,12 @@ export default async function QuestionPage({ params, searchParams }: PageProps<"
         { id: "options", label: "Wrong Options", content: <OptionsTab a={analysis} options={options} selected={latestAttempt?.selected_label ?? null} /> },
         { id: "visual", label: "Visual Learning", content: <VisualTab a={analysis} /> },
         { id: "strategy", label: "Exam Strategy", content: <StrategyTab a={analysis} /> },
+        {
+          id: "reel",
+          label: "Reel",
+          content: <ReelTab a={analysis} questionId={id} answerText={options.find((o) => o.label === analysis.answer.option)?.text} />,
+        },
+        { id: "videos", label: "Long Videos", content: <LongVideosTab a={analysis} questionId={id} /> },
         {
           id: "cases",
           label: "Related Cases",
